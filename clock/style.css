@@ -1,0 +1,12 @@
+.seconds{
+    transform: rotate(350deg) ;
+    transform-origin: 100% 100%;
+}
+.minutes{
+    transform: rotate(30deg) ;
+    transform-origin: 100% 100%;
+}
+.seconds{
+    transform: rotate(40deg) ;
+    transform-origin: 100% 100%;
+}

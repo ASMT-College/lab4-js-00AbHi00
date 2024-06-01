@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+    .container{
+        display: grid;
+        justify-items: center;
+
+    }
+    .red{
+        background-color: red;
+    }
+    #pwd::after{
+        content: "";
+        display: flex;
+    }
+</style>
+<body>
+    <form action="new.php" onsubmit="return validate()" method="post">
+    <fieldset class="container">
+        <legend style="text-align: center;">
+            Signup
+        </legend>
+        
+        <label for="text">
+            Enter your name
+        </label>
+        <input type="text" name="text" id="text"/>
+        <br/>
+
+        <label for="pw" id="pwd">Password</label>
+        <input type="password" name="pw" id="pw">
+
+        <br/>
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" >
+
+        <input type="submit" value="Submit here" >
+
+        </fieldset>
+    </form>
+
+    <script>
+        var global=1
+
+        function validate(){
+            var email=document.getElementById('email').value
+            console.log(email)
+            var newdoc=document.createElement("div")
+//             /-> 
+//             ^-> starting
+//             [\w]-> a-zA-z
+//             + -> one time or more
+//             * -> zero or more times
+//             @ -> at sign (this has to be present)
+//             . -> dot (this has to be present)
+//             {3,}-> at least 3 characters hunu paryo
+
+            var validationCriteria=/^[\w]+@[a-zA-Z]{3,}.com$/
+            if (validationCriteria.test(email)){
+                newdoc.innerHTML="valid"
+                return true
+            }else{
+                document.getElementById("email").style.backgroundColor="red"
+                document.getElementById("email").setAttribute("placeholder","Enter valid email")
+                document.getElementById("email").value=""
+               
+                newdoc.innerHTML="Invalid email"
+                return false
+            }
+            document.body.appendChild(newdoc)
+            validatepw()
+        }
+        function validatepw(){
+            var pw=document.getElementById('pw').value
+            var newdoc2=document.createElement("div")
+            newdoc2.innerHTML="hello hello"
+            document.body.appendChild(newdoc2)
+        }
+
+
+        function color(){
+            var email=document.getElementById("email")
+            var newdoc=document.createElement("div")
+            list=["red","green","blue","pink","black"]
+            
+            newdoc.innerHTML="helo, my name is abhishek"+list[global % list.length]
+            newdoc.setAttribute("class","red")
+            
+            newdoc.style.backgroundColor=list[global % list.length]
+            document.body.appendChild(newdoc)
+            global+=1
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
